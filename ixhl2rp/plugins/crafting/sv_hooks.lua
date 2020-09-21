@@ -28,6 +28,7 @@ net.Receive("ixRequestBlueprints", function(length, client)
 
     local blueprints = target:GetData("blueprints", {})
 
+    PrintTable(blueprints)
     net.Start("ixSendBlueprints")
         net.WriteString(target:GetName(), 32)
         net.WriteTable(blueprints)

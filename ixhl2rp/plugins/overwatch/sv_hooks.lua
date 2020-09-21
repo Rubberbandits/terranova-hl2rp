@@ -51,5 +51,7 @@ net.Receive("ixUpdateOverwatchModel", function(length, client)
         character:SetData("cpVoiceType", otaType.voiceType:lower())
     end
 
+    PLUGIN:UpdateOverwatchName(character)
+
     ix.log.AddRaw(client:Name() .. " has updated their overwatch model to " .. value .. ".")
 end)

@@ -4,7 +4,7 @@
 --]]
 
 PLUGIN.name = "Viewdata";
-PLUGIN.description = "Implements a new viewdata screen to hold records and a note.";
+PLUGIN.description = "tbd";
 PLUGIN.author = "Adolphus";
 
 -- Globals for viewdata message types to make it neater.

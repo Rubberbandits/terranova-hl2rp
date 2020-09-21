@@ -11,7 +11,7 @@ ITEM.width = 1
 ITEM.height = 1
 ITEM.description = "Cigarettes base"
 ITEM.price = 20;
-ITEM.time = 300
+ITEM.time = 90
 ITEM.pacData = PLUGIN.pacData.unlit
 ITEM.pacDataAlternate = PLUGIN.pacData.lit
 ITEM.functions.Equip = {
@@ -117,6 +117,21 @@ if (CLIENT) then
 			surface.DrawRect(3, h-8, filledWidth, 5)
 		end
 	end
+end
+
+function ITEM:CanTransfer(oldInventory, newInventory)
+	if (newInventory) then
+		local client = self:GetOwner()
+
+		self:SetData("equip", false)
+		self:SetData("lit", false)
+
+		if(client) then
+			client:RemovePart(self.uniqueID)
+		end
+	end
+
+	return true
 end
 
 function ITEM:OnRemoved()

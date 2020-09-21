@@ -166,8 +166,6 @@ function RECIPE:HaveLiquid(value, uniqueID, inventory)
 	if(neededLiquid != 0) then
 		return false
 	end
-
-	return true
 end
 
 -- Called when checking if a character has stackable items that a recipe requires.
@@ -186,12 +184,10 @@ function RECIPE:HaveStackables(value, uniqueID, inventory)
 			break
 		end
 	end
-	
+
 	if(neededStacks != 0) then
 		return false
 	end
-
-	return true
 end
 
 -- Called when checking if a character has regular items that a recipe requires.
@@ -205,8 +201,6 @@ function RECIPE:HaveItems(value, uniqueID, inventory)
 	if(!items[value]) then
 		return false
 	end
-
-	return true
 end
 
 -- Called when we need to see if a client has the correct materials to finish a recipe.

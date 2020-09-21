@@ -30,7 +30,7 @@ function PANEL:Init()
 end
 
 -- Called when we are setting the target of the character panel
-function PANEL:SetCharacter(character, charPanel)
+function PANEL:SetCharacter(character)
 	self.model = self:Add("ixModelPanel")
 	self.model:Dock(FILL)
 	self.model:SetFOV(50)
@@ -39,7 +39,7 @@ function PANEL:SetCharacter(character, charPanel)
 	self.character = character
 
 	self:UpdateModel()
-	self:SetCharPanel(charPanel or self:GetCharacter():GetCharPanel())
+	self:SetCharPanel(self:GetCharacter():GetCharPanel())
 end
 
 -- Returns the character tied to this character panel.
@@ -83,7 +83,7 @@ end
 
 -- Helper function to set the visibility of the slots.
 function PANEL:ToggleSlots(bShow)
-	for k, v in pairs(self.slots or {}) do
+	for k, v in pairs(self.slots) do
 		if(IsValid(v)) then
 			v:SetVisible(bShow)
 		end
@@ -92,13 +92,11 @@ end
 
 -- Called when we need to update the model in the character panel.
 function PANEL:UpdateModel()
-	if(IsValid(self.model)) then
-		self.model:SetModel(self:GetCharacter().model or self:GetCharacter():GetPlayer():GetModel(), self:GetCharacter().vars.skin or self:GetCharacter():GetData("skin", 0))
+	self.model:SetModel(self:GetCharacter():GetPlayer():GetModel(), self:GetCharacter():GetData("skin", 0))
 
-		for k, v in pairs(self:GetCharacter().vars.groups or self:GetCharacter():GetData("groups", {})) do
-			self.model.Entity:SetBodygroup(k, v)
-		end
-	end
+	for k, v in pairs(self:GetCharacter():GetData("groups", {})) do
+        self.model.Entity:SetBodygroup(k, v)
+    end
 end
 
 -- Called when we are assigning all the character panel data to this panel.
