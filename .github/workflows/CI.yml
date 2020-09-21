@@ -1,0 +1,28 @@
+name: CI
+on: [push, pull_request]
+
+jobs:
+  linter:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        path: helix
+
+    - uses: leafo/gh-actions-lua@v5
+    - uses: leafo/gh-actions-luarocks@v2
+
+    - name: Pull gluacheck
+      uses: actions/checkout@v2
+      with:
+        repository: impulsh/gluacheck
+        path: luacheck
+
+    - name: Build gluacheck
+      working-directory: luacheck
+      run: luarocks make
+
+    - name: Lint
+      working-directory: helix
+      run: luacheck .

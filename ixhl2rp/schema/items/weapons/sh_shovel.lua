@@ -1,0 +1,11 @@
+ITEM.name = "Shovel"
+ITEM.description = "A old large digging shovel with blunt edges and a decaying handle."
+ITEM.model = "models/weapons/hl2meleepack/w_shovel.mdl"
+ITEM.class = "arccw_shovel_tn"
+ITEM.category = "Melee"
+ITEM.weaponCategory = "melee"
+ITEM.flag = "V"
+ITEM.width = 1
+ITEM.height = 4
+ITEM.bDropOnDeath = true
+ITEM.noBusiness = true
